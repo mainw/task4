@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Wpf.Controls.Forms.ReceivingSideInfoForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wpf.Controls.Forms"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:ReceivingSideInfoFormViewModel}">
+    <local:TemplateForm HeaderText="Принимающая сторона">
+        <UniformGrid Rows="4" Margin="5">
+            <TextBlock Text="Подразделение*:"/>
+            <ComboBox SelectedItem="{Binding SelectedDivision}"
+                      ItemsSource="{Binding Divisions}"/>
+            <TextBlock Text="ФИО*:"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0">
+                    <TextBox HorizontalAlignment="Stretch"
+                             Text="{Binding FIO}"
+                             Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Width}"/>
+                </Border>
+                <Button Grid.Column="1" Width="15" Height="15" Command="{Binding Commands.LoadImage}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Assets/Images/user_button.jpg"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </UniformGrid>
+    </local:TemplateForm>
+</UserControl>

@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Wpf.Controls.Forms.VisitorInfoForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wpf.Controls.Forms"
+             xmlns:converters="clr-namespace:Wpf.Converters"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=local:VisitorInfoFormViewModel}" MinHeight="180">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:WidthToWidthByConditionConverter x:Key="WidthToWidthByConditionConverter" NewValue="0" DefaultValue="1*" AllowValue="600"/>
+            <Style TargetType="UniformGrid">
+                <Setter Property="Margin" Value="2,-5"/>
+            </Style>
+            <ImageSource x:Key="imageUserLogo">
+                pack://application:,,,/Assets/Images/user_button.jpg
+            </ImageSource>
+        </ResourceDictionary>
+    </UserControl.Resources>    
+    <local:TemplateForm HeaderText="Информация о посетителе">
+        <Grid Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthToWidthByConditionConverter}}"/>
+            </Grid.ColumnDefinitions>
+            <UniformGrid Columns="1" Grid.Column="0" Margin="0">
+                <UniformGrid>
+                    <TextBlock Text="Фамилия*:"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding SecondName}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Имя*:"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding FirstName}"/>
+                </UniformGrid>
+                <UniformGrid VerticalAlignment="Center">
+                    <TextBlock Text="Отчество*:"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Patronumic}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Телефон*:"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Phone}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="E-mail*:"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Email}"/>
+                </UniformGrid>
+            </UniformGrid>
+            <UniformGrid Columns="1" Grid.Column="1">
+                <UniformGrid>
+                    <TextBlock Text="Организация*:" HorizontalAlignment="Left"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Organization}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Примечание*:" HorizontalAlignment="Left"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding Addition}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Дата рождения*:" HorizontalAlignment="Left"/>
+                    <Border HorizontalAlignment="Right" ClipToBounds="True" VerticalAlignment="Center">
+                        <Border.Style>
+                            <Style TargetType="Border" BasedOn="{StaticResource circleBorder}">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="BorderBrush" Value="Gray"/>
+                                <Setter Property="Background" Value="White"/>
+                            </Style>
+                        </Border.Style>
+                        <DatePicker HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedDate="{Binding DateBorn}" BorderThickness="0" BorderBrush="Transparent" Background="Transparent"/>
+                    </Border>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Серия*:" HorizontalAlignment="Left"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding PassportSeria}"/>
+                </UniformGrid>
+                <UniformGrid>
+                    <TextBlock Text="Номер*:" HorizontalAlignment="Left"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding PassportNumber}"/>
+                </UniformGrid>
+            </UniformGrid>
+            <UniformGrid Columns="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Image Source="{Binding PersonalBitmapImage, IsAsync=True, TargetNullValue={StaticResource imageUserLogo}}" Height="100"/>
+                <Button Content="Загрузить фото" Command="{Binding Commands.UploadImage}" Style="{StaticResource commonButton}" HorizontalContentAlignment="Center" Width="150" VerticalAlignment="Center" Height="30"/>
+            </UniformGrid>
+        </Grid>
+    </local:TemplateForm>
+</UserControl>
