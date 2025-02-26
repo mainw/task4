@@ -31,13 +31,13 @@
                 <Button HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="25" Height="25" Source="pack://application:,,,/Assets/Images/excel.jpg"/>
-                        <TextBlock Text="загрузить список" Foreground="Red" FontSize="14" FontWeight="Bold"/>
+                        <TextBlock Text="загрузить список" Foreground="Red" FontSize="13" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
                 <Button HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="25" Height="25" Source="pack://application:,,,/Assets/Images/excel.jpg"/>
-                        <TextBlock Text="Скачать шаблон списка" Foreground="Red" FontSize="14" FontWeight="Bold"/>
+                        <TextBlock Text="Скачать шаблон списка" Foreground="Red" FontSize="13" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </UniformGrid>

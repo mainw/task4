@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf.Controls" xmlns:forms="clr-namespace:Wpf.Controls.Forms"
         mc:Ignorable="d"
-        Title="Хранитель ПРО" MinHeight="480" MinWidth="800" Height="480" Width="800" Icon="/Assets/Images/logo.png"
+        Title="Хранитель ПРО" MinHeight="480" MinWidth="840" Height="480" Width="800" Icon="/Assets/Images/logo.png"
         DataContext="{DynamicResource viewModel}">
     <Window.Resources>
         <local:MainWindowViewModel x:Key="viewModel"/>
